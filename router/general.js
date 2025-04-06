@@ -58,6 +58,7 @@ public_users.get("/review/:isbn", (req, res) => {
   return res.status(400).json({ message: "Book not found" });
 });
 
+// Get the book list asynchronously
 public_users.get("/async/books", async (req, res) => {
   try {
     const booksList = await new Promise((resolve, reject) => {
@@ -71,7 +72,7 @@ public_users.get("/async/books", async (req, res) => {
   }
 });
 
-// Search by ISBN – Using Promises
+// Search by ISBN – Using Promisesz
 public_users.get("/async/isbn/:isbn", (req, res) => {
   return new Promise((resolve, reject) => {
     const book = books[req.params.isbn];
